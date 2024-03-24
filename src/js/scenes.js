@@ -30,7 +30,7 @@ function titleOnLoad(){
 	let buttonWidth = 150;
 	let buttonHeight = 40;
 	//   色付け
-	const buttonColor1 = "rgba(0,0,0,0.5)"; // 塗りつぶす色
+	const buttonColor1 = "rgba(0,0,0,0.6)"; // 塗りつぶす色
 	const buttonColor2 = "#FFF"; // 輪郭の色
 	const buttonLineWidth  = 1;
 	let buttonDraw = function(){
@@ -124,7 +124,7 @@ function gameOnload(){
 	const typingBoxBackGroundWidth = 514;
 	const typingBoxBackGroundHeight = 100;
 	//    色
-	const typingBoxBackGroundColor1 = "rgba(0,0,0,0.4)";
+	const typingBoxBackGroundColor1 = "rgba(0,0,0,0.6)";
 	const typingBoxBackGroundColor2 = "#FFF";
 	const typingBoxBackGroundLineWidth = 1;
 	const typingBoxBackGroundDraw = function(){
@@ -225,8 +225,16 @@ function gameOnload(){
 	// typingObject
 	typingObject = new TypingObject({}, "", "");
 
-	// recordStartTime
-	startTime = date.getTime(); // 開始時刻取得
+	// 成績初期化
+	let date = new Date();
+	recordTypeCount = 0;
+	recordMissTypeCount = 0;
+	recordKillCount = 0;
+	startTime = date.getTime();
+	endTime = 0;
+	recordClearTime = 0;
+	typeSpeed = 1.0;
+	typeSpeedLevel = 1;
 
 }
 function gameUpdate(){
@@ -360,7 +368,7 @@ function resultOnload(){
 	const BackGroundWidth = 280;
 	const BackGroundHeight = 335;
 	//    色
-	const BackGroundColor1 = "rgba(0,0,0,0.4)";
+	const BackGroundColor1 = "rgba(0,0,0,0.6)";
 	const BackGroundColor2 = "#FFF";
 	const BackGroundLineWidth = 1;
 	const BackGroundDraw = function(){
@@ -444,15 +452,6 @@ function resultOnload(){
 	// objects.restartButton.drawText = buttonDrawText;
 	restartButton.onClick = function(){
 		scene = scenes.game;
-
-		// record初期化
-		date = new Date();
-		recordTypeCount = 0;
-		recordMissTypeCount = 0;
-		recordKillCount = 0;
-		startTime = 0;
-		endTime = 0;
-
 		gameOnload();
 		return true;
 	}
@@ -517,7 +516,7 @@ async function rankingOnload(){
 	const BackGroundWidth = 500;
 	const BackGroundHeight = 400;
 	//    色
-	const BackGroundColor1 = "rgba(0,0,0,0.4)";
+	const BackGroundColor1 = "rgba(0,0,0,0.6)";
 	const BackGroundColor2 = "#FFF";
 	const BackGroundLineWidth = 1;
 	const BackGroundDraw = function(){
@@ -639,7 +638,7 @@ function registRankingOnload(){
 	const BackGroundWidth = 280;
 	const BackGroundHeight = 335;
 	//    色
-	const BackGroundColor1 = "rgba(0,0,0,0.4)";
+	const BackGroundColor1 = "rgba(0,0,0,0.6)";
 	const BackGroundColor2 = "#FFF";
 	const BackGroundLineWidth = 1;
 	const BackGroundDraw = function(){

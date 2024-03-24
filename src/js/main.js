@@ -11,21 +11,21 @@ const scenes = {
 };
 
 // 成績
-let date = new Date();
 let recordTypeCount = 0;
 let recordMissTypeCount = 0;
 let recordKillCount = 0;
 let startTime = 0;
 let endTime = 0;
 let recordClearTime = 0;
+let typeSpeed = 1.0;
+let typeSpeedLevel = 1;
+
 
 let g, scene;      // 
 let clickPos = []; // クリックされた場所のcanvasからの相対座標が格納される.
 let objects = {};  // 
 let input = []; // キー入力
-let typeSpeed = 1.0;
-let typeSpeedLevel = 1;
-
+let rankingPage = 0;
 // ゲーム画面
 let typingJson;
 let pharasesJson;
@@ -42,6 +42,11 @@ window.onload = async function() {
 	g = canvas.getContext("2d");
 	g.imageSmoothingEnabled = true;
 	
+	// ファイル読み込み
+	const paths = ['./src/img/background01.png', './src/img/amida.png', ];
+	const promises = paths.map(path => fetch(path));
+	await Promise.all(promises)
+
 	// font読み込み
 	//   azuki_font
 	var fontFace = new FontFace('azuki_font', 'url(./src/fonts/azuki.ttf)', { style: 'normal', weight: 700});
@@ -60,9 +65,6 @@ window.onload = async function() {
 	se = new Audio('./src/se/typing_sound.wav');
 
 	// ゲーム開始
-	const paths = ['./src/img/background01.png', './src/img/amida.png'];
-	const promises = paths.map(path => fetch(path));
-	await Promise.all(promises)
 	init();
 	setInterval("gameloop()", 1000 / fps);
 	console.log("maguro oisii");
